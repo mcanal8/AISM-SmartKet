@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "SmartKet",
+  "short_name": "SmartKet",
+  "version": "com.example.hello",
+  "description": "La compra facil i divertida",
+  "author": "Grup 02",
+  "icons": [],
+  "start_url": "index.html"
+}

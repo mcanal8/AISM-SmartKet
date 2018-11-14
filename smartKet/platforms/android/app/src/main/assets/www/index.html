@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+       <!--  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/materialize.css">
+        <title>SmartKet</title>
+    </head>
+    <body>
+        <!-- <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div> -->
+
+
+        <!--LOGIN I RESGISTRE-->
+        <div id="login_i_register">
+            <img src="img/login_screen_prov.png" width="100%">
+            <br><br>
+            <!--Login-->
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="usuari" type="text" class="validate">
+                        <label for="usuari">Nom d'usuari</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="contrasenya" type="password" class="validate">
+                        <label for="contrasenya">Contrasenya</label>
+                    </div>
+                </div>
+            </form>
+            <p>Has oblidat la contrasenya?</p> 
+            <div class="center-align">
+               <button class="btn-floating btn-large waves-effect waves-light light-blue darken-3 btn-large pulse" id="login"><i class="material-icons">arrow_forward</i></button>
+            </div><br> 
+            <div class="center-align">
+               <a class="waves-effect waves-light btn light-blue darken-3" id="registrar">Registra't</a><br> 
+            </div> 
+        </div>
+
+
+        <!--Pagina principal -->
+        <div id="pagina_principal" style="display: none">
+
+            <!-- Menú Lateral -->
+
+            <ul id="slide-out" class="side-nav">
+                <li><div class="user-view">
+                    <div class="background">
+                    <img src="img/ciutat.jpg">
+                    </div>
+                    <a href="#!user"><img class="circle" src="img/user.png"></a>
+                    <a href="#!name"><span class="white-text name">Usuari</span></a>
+                    <a href="#!email"><span class="white-text email">usuari@gmail.com</span></a>
+                </div></li>
+                <li><a href="#!"><i class="material-icons">list</i>Llistes</a></li>
+                <li><a href="#!" id="mainMenu"><i class="material-icons">restaurant</i>Menús</a></li>
+                <li><a href="#!"><i class="material-icons">shopping_cart</i>Supermercats</a></li>
+                <li><a href="#!"><i class="material-icons">gamepad</i>Reptes</a></li>
+                <li><a href="#!"><i class="material-icons">forum</i>Amics</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="#!"><i class="material-icons">notifications_active</i>Avisos i Notificacions</a></li>
+                <li><a href="#!"><i class="material-icons">settings</i>Configuració</a></li>
+                <li><a href="#!"><i class="material-icons">help</i>Ajuda</a></li>
+             </ul>
+
+            <!-- Barra Superior de Navegació -->
+            <nav class="nav-extended">
+            <div id="barraSuperior" class="nav-wrapper light-green">
+                <a href="#" class="brand-logo">Les Teves Llistes</a>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+            </div>
+            <div id ="pestanyes" class="nav-content white">
+                <ul class="tabs tabs-transparent">
+                <li class="tab"><a href="#totes">Totes</a></li>
+                <li class="tab"><a class="active" href="#propies">Pròpies</a></li>
+                <li class="tab"><a href="#compartides">Compartides</a></li>
+                </ul>
+            </div>
+            </nav>
+
+            <!-- Pestanya 1 -->
+            <div id="totes" class="col s12">
+
+                <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Select</label>
+                </div>
+
+                <div class="row">
+                        <div class="col s12 m7">
+                        <div class="card">
+                            <div class="card-image">
+                            <img src="img/material1.jpg">
+                            <span class="card-title">Compra Setmanal</span>
+                            </div>
+                            <div class="card-content">
+                            </div>
+                            <div class="card-action">
+                                <i class="small material-icons">insert_chart</i>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                
+                <div class="row">
+                        <div class="col s12 m7">
+                        <div class="card">
+                            <div class="card-image">
+                            <img src="img/muntanya.png">
+                            <span class="card-title">Cap de Setmana</span>
+                            </div>
+                            <div class="card-content">
+                            </div>
+                            <div class="card-action">
+                                <i class="small material-icons">insert_chart</i>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <!-- Pestanya 2 -->
+            <div id="propies" class="col s12">
+
+                    <div class="fixed-action-btn">
+                            <button class="btn-floating btn-large lime accent-4" id="novaLlista"><i class="material-icons">add</i></button>
+                    </div>
+
+                    <div class="tap-target lime accent-4" data-activates="novaLlista">
+                        <div class="tap-target-content">
+                            <h5><span class="white-text text-darken-2">Crea una Llista </span></h5>
+                            <p><span class="white-text text-darken-2">Per començar, crea una llista nova des d'aquí</span></p>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div id="Llistes">
+                Encara no has creat cap llista
+            </div>
+
+            <!-- Pestanya 3 -->
+            <div id="compartides" class="col s12"></div>
+                            
+
+        </div>
+
+
+
+
+        <!--Pagina Llista -->
+        <div id="pagina_llista" style="display: none">
+
+            <!-- Barra Superior -->
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="nav-wrapper light-green">
+                    
+                    <a href="#!" class="brand-logo col s2 left">Nova Llista</a>
+                    <ul class="right">
+                        <li><a href="sass.html"><i class="material-icons">edit</i></a></li>
+                        <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+                        <li><a href="sass.html"><i class="material-icons" id="eliminarLlista">delete</i></a></li>
+                        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+                    </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Nom de la llista -->
+
+            <div class="row">
+                <form class="col s12" id="nomLlista">
+                    <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Nom de la llista" id="nomLlista" type="text" class="validate">
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- <ul class = "collection">         
+                <li class = "collection-item">
+                    <div>Item 1<input type="checkbox" class="filled-in right" id="filled-in-box"/>
+                        <label for="filled-in-box"></label></div></li>
+            </ul> -->
+            <div>
+                <ul class = "collection" id="elements">
+                </ul>
+                <!-- 
+                    Heu de fer dins de l'elem de la llista ( li ) per poder posar el text ( això ja ho teniu ) i posar una icona/butó per poder esborrar l'element.
+                    Seria recomanable que en afegir el 'li' desde el vostre codi us guardessiu com a atribut del 'li' el identificador per el qual després podreu 
+                        trobar de forma ràpida l'element i esborrar-lo, en plan '<li class="XXXX" item-id="YYYY">....'.
+                -->
+                <input placeholder="Afegeix un nou element" type="text" id="add" size ="50"/>
+                <input type="button" id="btnAdd" value="Add" onclick="addItem()">
+            </div>
+
+            <div class="fixed-action-btn">
+                    <button class="btn-floating btn-large waves-effect waves-light cyan accent-4" id="crearLlista"><i class="material-icons">done</i></button>
+            </div>
+        </div>
+
+        <!--Pagina Menu -->
+        <div id="pagina_menus" style="display: none">
+
+            <!-- Barra Superior -->
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="nav-wrapper light-green">
+                    
+                    <a href="#!" class="brand-logo col s2 left">Menus</a>
+                    <!--<ul class="right">
+                        <li><a href="sass.html"><i class="material-icons">edit</i></a></li>
+                        <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+                        <li><a href="sass.html"><i class="material-icons" id="eliminarLlista">delete</i></a></li>
+                        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+                    </ul>-->
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Nom de la llista -->
+
+            <div class="row">
+                <form class="col s12" id="nomMenu">
+                    <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Nom de la llista" id="nomLlista" type="text" class="validate">
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- <ul class = "collection">         
+                <li class = "collection-item">
+                    <div>Item 1<input type="checkbox" class="filled-in right" id="filled-in-box"/>
+                        <label for="filled-in-box"></label></div></li>
+            </ul> -->
+            <div>
+                <ul class = "collection" id="elements">
+                </ul>
+                <!-- 
+                    Heu de fer dins de l'elem de la llista ( li ) per poder posar el text ( això ja ho teniu ) i posar una icona/butó per poder esborrar l'element.
+                    Seria recomanable que en afegir el 'li' desde el vostre codi us guardessiu com a atribut del 'li' el identificador per el qual després podreu 
+                        trobar de forma ràpida l'element i esborrar-lo, en plan '<li class="XXXX" item-id="YYYY">....'.
+                -->
+                <input placeholder="Afegeix un nou element" type="text" id="add" size ="50"/>
+                <input type="button" id="btnAdd" value="Add" onclick="addItem()">
+            </div>
+
+            <div class="fixed-action-btn">
+                    <button class="btn-floating btn-large waves-effect waves-light cyan accent-4" id="crearLlista"><i class="material-icons">done</i></button>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    </body>
+</html>
